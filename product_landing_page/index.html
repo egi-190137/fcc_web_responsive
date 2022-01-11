@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="header">
+    <div class="container">
+      <div class="logo">
+        <img id="header-img" src="logo-mono.png" alt="header image">
+      </div>
+
+      <div id="nav-bar-button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav id="nav-bar">
+        <ul>
+          <li>
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#feature">Features</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#video-section">Video</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#download">Download</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#about">About</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+    
+  <section id="home">
+    <div class="container">
+      <div class="info">
+        <h1>Linux Mint 20.3</h1>
+        <p>The latest version of the friendly operating system is here. Install it on your computer today!</p>
+      </div>
+      <div class="home-img">
+        <img src="devices.png" alt="">
+      </div>
+    </div>
+  </section>
+
+  <section id="feature">
+    <div class="container">
+      <h1>Feature</h1>
+      <p>Linux Mint is an operating system for desktop and laptop computers. It is designed to work 'out of the box' and comes fully equipped with the apps most people need.</p>
+      <div class="feature-container">
+        <div class="feature-detail">
+          <h2>Graphic Design</h2>
+          <p>
+              Work in 3D with Blender, draw or edit pictures in Gimp, use Inkscape for vector graphics.
+          </p>
+        </div>
+        <div class="feature-detail">
+          <h2>Productivity</h2>
+          <p>
+              With LibreOffice's complete office suite, use the word processor, make presentations, drawings, spreadsheets or even databases. Easily import from or export to PDF or Microsoft Office documents.
+          </p>
+        </div>
+        <div class="feature-detail">
+          <h2>Multimedia</h2>
+          <p>
+              Enjoy your music, watch TV and movies, listen to podcasts, Spotify and online radio.
+          </p>
+        </div>
+        <div class="feature-detail">
+          <h2>Web</h2>
+          <p>
+              Browse the Web, watch Youtube and Netflix with Firefox. Turn any website into a desktop app for immediate access.
+          </p>
+        </div>
+        <div class="feature-detail">
+          <h2>Gaming</h2>
+          <p>
+              Access more than 7,800 games with Steam. Install GOG to get even more.
+          </p>
+        </div>        
+      </div>
+    </div>
+  </section>
+
+  <section id="video-section">
+    <div class="container">
+      <h1>A Video about Linux Mint</h1>
+      <video id="video" height="320" width="569" controls>
+        <source src="Screencast 2021-07-11 14:07:45.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <section id="download">
+    <div class="container">
+      <h1>Download ISO with Send Link to Your Email</h1>
+      <form action="https://www.freecodecamp.com/email-submit" id="form">
+        <input type="email" id="email" name="email" placeholder="Enter your email here">
+        <input type="submit" value="Send Link" id="submit">
+      </form>
+    </div>
+  </section>
+
+  <footer id="about">
+    Linux Mint is copyrighted since 2006 and trademarked through the Linux Mark Institute.
+    All rights reserved.
+    <br>
+    Linux® is the registered trademark of Linus Torvalds in the U.S. and other countries.
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>

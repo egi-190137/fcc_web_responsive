@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 id="title">Form Absensi Webinar Literasi Digital</h1>
+      <p id="description">Ini adalah form absensi Webinar Literasi Digital</p>
+    </div>
+  </header>
+    
+  <form action="get" id="survey-form">
+    <div class="container">
+      <label for="name" id="name-label">Nama</label>
+      <input type="text" name="name" id="name" placeholder="Masukkan nama" required>
+      
+      <label for="email" id="email-label">Email</label>
+      <input type="email" name="email" id="email" placeholder="Masukkan email" required>
+      
+      <label for="number" id="number-label">Pertemuan ke-</label>
+      <input type="number" min="0" max="1000" name="pertemuan" id="number" placeholder="Masukkan NIM">
+      
+      <label for="dropdown" id="dropdown-label">Prodi</label>
+      <select id="dropdown" name="prodi">
+        <option value="0">Teknik Mesin</option>
+        <option value="1">Teknik Industri</option>
+        <option value="2">Teknik Mekatronika</option>
+        <option value="3">Teknik Elektro</option>
+        <option value="4">Teknik Informatika</option>
+        <option value="5">Sistem Informasi</option>
+      </select>
+      
+      <p>Apakah Anda mengetahui tentang Literasi Digital</p>
+      <label for="tidak-tahu">
+        <input type="radio" name="pengetahuan" id="tidak-tahu" value="tidak-tau">
+        Tidak tahu
+      </label>
+      <label for="cukup-tahu">
+        <input type="radio" name="pengetahuan" id="cukup-tahu" value="cukup-tahu">
+        Cukup tahu
+      </label>
+      <label for="tahu">
+        <input type="radio" name="pengetahuan" id="tahu" value="tahu">
+        tahu
+      </label>
+
+      <p>Apa Alasan anda mengikuti webinar Literasi Digital</p>
+      <label for="nilai">
+        <input type="checkbox" name="alasan1" id="nilai" value="nilai">
+        Menambah Nilai
+      </label>
+      <label for="wawasan">
+        <input type="checkbox" name="alasan2" id="wawasan" value="wawasan">
+        Menambah Wawasan
+      </label>
+      <label for="ikut-ikutan">
+        <input type="checkbox" name="alasan3" id="ikut-ikutan" value="ikut-ikutan">
+        Ikut-ikutan
+      </label>
+
+      <label for="komentar">Komentar anda mengenai webinar Literasi Digital</label>
+      <textarea name="komentar" id="komentar" cols="80" rows="7"></textarea>
+      
+      <button type="submit" id="submit">Kirim</button>
+    </div>
+  </form>
+
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
