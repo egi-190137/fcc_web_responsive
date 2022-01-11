@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+  <nav id="navbar">
+    <header>Komputasi Numerik</header>
+    
+    <div id="nav-bar-button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <ul>
+      <li>
+        <a href="#Error_in_Numerical_Computation" class="nav-link">
+          Error in Numerical Computation
+        </a>
+      </li>
+      <li>
+        <a href="#Numerical_Solutions_of_Algebraic_and_Transcendental_Equations" class="nav-link">
+          Numerical Solutions of Algebraic and Transcendental Equations
+        </a>
+      </li>
+      <li>
+        <a href="#Numerical_Diferentiation" class="nav-link">
+          Numerical Diferentiation
+        </a>
+      </li>
+      <li>
+        <a href="#Integrasi_Numerik" class="nav-link">
+          Integrasi Numerik
+        </a>
+      </li>
+      <li>
+        <a href="#Solusi_Numerik_Dari_Sistem_Persamaan_Aljabar_Linier" class="nav-link">
+          Solusi Numerik Dari Sistem Persamaan Aljabar Linier
+        </a>
+      </li>
+      <li>
+        <a href="#Solusi_numerik_dari_persamaan_diferensial_biasa" class="nav-link">
+          Solusi numerik dari persamaan diferensial biasa
+        </a>
+      </li>
+    </ul>
+    
+  </nav>
+
+
+  <main id="main-doc">
+    <section class="main-section" id="Error_in_Numerical_Computation">
+      <header>
+        Error in Numerical Computation
+      </header>
+      <article>
+        <p>
+          Dalam suatu metode numerik pasti akan menghasilkan suatu error atau galat. Galat merupakan selisih dari nilai yang dihasilkan oleh metode numerik dengan nilai asli. Meskipun nilai yang dihasilkan bukan nilai asli, metode numerik bukan sepenuhnya salah karena selisih tersebut dapat ditekan seminimal agar selisihnya mendekati angka 0.
+        </p>
+      </article>
+      
+    </section>
+
+    <section class="main-section" id="Numerical_Solutions_of_Algebraic_and_Transcendental_Equations">
+      <header>
+        Numerical Solutions of Algebraic and Transcendental Equations
+      </header>
+      <article>
+        <p>
+          Solusi f(x) = 0, dapat diketahui apabila f(x) merupakan polinomial dua pangkat atau lebih karena kita punya formula untuk menyelesaikannya. Tetapi jika f(x) merupakan fungsi Transcendental tidak dapat diselesaikan menggunakan formula. Karena formula untuk menghitung fungsi tsb belum ditemukan. fungsi transcendental merupakan fungsi yang tidak dapat diekspresikan dengan aljabar seperti trigonometri dan exponensial. Untuk menyelesaikan fungsi seperti ini dapat diselesaikan dengan beberapa metode diantarany: metode Bisection, metode raphson, metode secant, dan metode newton.
+        </p>
+        
+        <h2>Metode Bisection</h2>
+        <p>
+          Metode ini dilakukan dengan mencari dua angka yang akan menghasilkan nilai negatif dan positif pada fungsi. Misal dua akar tersebut adalah a dan b. f(a) positif dan f(b) negatif, kemudian kita asumsikan akar pertama (x0) adalah nilai tengah dari a dan b.
+        </p>
+        <p>
+          Jika f(x0) negatif maka akarnya berada diantara a dan x0. Sebaliknya, maka x0 dan b. Kemudian ulangi cara sebelumnya untuk mencari akar berikutnya sampai setengah dari selisih a dan b lebih kecil dari nilai toleransi yang telah ditentukan.
+        </p>
+        <code>x0=(a+b)/2</code>
+        <p>Jika f(x0)<0:</p>
+        <code>x1=(a+x0)/2</code>
+
+        <ul>
+          <li>
+            Algoritma
+            <pre>
+              <code>
+PROGRAM Bisection
+
+f = lambda x : x**2 - 7*x + 10
+
+float a, b, toleransi
+boolean lanjut
+
+read(a, b, toleransi)
+fa <- f(a)
+fb <- f(b)
+while True:
+    c <- (a+b) / 2
+    fc <- f(c)
+    lanjut <- abs(b-a) / 2 > toleransi
+    if fa * fc < 0:
+        b, fb = c, fc
+    else:
+        a, fa = c, fc
+
+    if not lanjut:
+        break
+write(c)
+              </code>
+            </pre>
+          </li>
+          <li>
+            Coding
+            <pre>
+              <code>
+a = float(input())
+b = float(input())
+toleransi = float(input())
+fa = f(a)
+fb = f(b)
+while True:
+    c = (a+b) / 2
+    fc = f(c)
+    lanjut = abs(b-a) / 2 > toleransi
+    if fa * fc < 0:
+        b, fb = c, fc
+    else:
+        a, fa = c, fc
+
+    if not lanjut:
+        break
+print(c)
+              </code>
+            </pre>
+          </li>
+        </ul>
+
+        <h2>Metode Newton Raphson</h2>
+        <p>
+          Metode Newton Raphson adalah metode mencari akar persamaan yang menggunakan persamaan dan turunannya.
+        </p>
+        <p>
+          Untuk menggunakan metode ini kita perlu menentukan x0 terlebih dahulu, dalam hal ini f`(x0) != 0. Dan mengetahui turunan dari fungsi yang akan dicari akarnya.
+        </p>
+        <ul>
+          <li>
+            Algoritma
+            <pre>
+              <code>
+<!-- PROGRAM newton Raphson
+
+f = lambda x : x**3 - 2*(x**2) + x - 3
+fp = lambda x : 3*(x**2) - 4*x + 1
+
+float xOld, t
+integer n, iterasi
+read(xOld, t, n)
+iterasi <- 1
+xNew <- xOld - (f(xOld)/fp(xOld))
+while iterasi <= n:
+    xOld <- xNew
+    iterasi <- iterasi + 1
+
+    xNew <- xOld - (f(xOld)/fp(xOld))
+
+    if abs(xNew - xOld) < t:
+        break
+
+write(xNew) -->
+              </code>
+            </pre>
+          </li>
+          <li>
+            Coding
+            <pre>
+              <code>
+<!-- f = lambda x : x**3 - 2*(x**2) + x - 3
+fp = lambda x : 3*(x**2) - 4*x + 1
+
+xOld = float(input())
+t = float(input())
+n = int(input())
+iterasi = 1
+xNew = xOld - (f(xOld)/fp(xOld))
+
+while iterasi <= n:
+    xOld = xNew
+    iterasi += 1
+
+    xNew = xOld - (f(xOld)/fp(xOld))
+
+    if abs(xNew - xOld) < t:
+        break
+
+print(xNew) -->
+              </code>
+            </pre>
+          </li>
+        </ul>
+
+        <h2>Metode Secant</h2>
+        <p>
+          Metode Secant adalah metode untuk mencari akar dengan menginisialisasi dua akar terlebih dahulu:
+        </p>
+        <code>xi−1,xi</code>
+        <p>
+          Kemudian hitung akar berikutnya dengan rumus berikut apabila selisih dari akar yang telah dihitung dengan akar sebelumnya (xi) maka hasil dari program adalah akar telah dihitung tsb.
+        </p>
+        <ul>
+          <li>
+            Algoritma
+            <pre>
+              <code>
+PROGRAM hitung akar dengan metode secant
+
+f = lambda x : x**2 - 5*x - 2
+
+float x0, x1, x2, toleransi
+read(x0, x1, toleransi)
+
+while True:
+    x2 <- x1 - f(x1) * ( (x1 - x0) / f(x1) - f(x0) )
+
+    if abs(x2 - x1) < toleransi:
+        break
+
+    x0 <- x1
+    x2 <- x1
+
+write(x2)
+              </code>
+            </pre>
+          </li>
+          <li>
+            Coding
+            <pre>
+              <code>
+f = lambda x : x**2 - 5*x - 2
+
+# x(i-1) => x0
+# xi => x1
+# x(i+1) => x2
+x0 = float(input())
+x1 = float(input())
+toleransi = float(input())
+
+while True:
+    x2 = x1 - f(x1) * ( (x1 - x0) / f(x1) - f(x0) )
+
+    if abs(x2 - x1) < toleransi:
+        break
+
+    x1, x0 = x2, x1
+
+print(x2)
+              </code>
+            </pre>
+          </li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="Numerical_Diferentiation">
+      <header>
+        Numerical Diferentiation
+      </header>
+      <article>
+        <p>
+          Diferensiasi numerik adalah suatu perhitungan yang sering digunakan untuk memperhitungkan perubahan nilai dalam satu satuan waktu atau jarak.
+        </p>
+        <ul>
+          <li>Metode Selisih Maju</li>
+          <li>Metode Selisih Mundur</li>
+          <li>Metode Selisih Tengahan</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="Integrasi_Numerik">
+      <header>
+        Integrasi Numerik
+      </header>
+      <article>
+        <p>
+          Integrasi Numerik adalah sebuah metode yang digunakan untuk mengetahui luas daerah di bawah fungsi dalam selang tertentu. Di dalam integrasi numerik terdapat dua jenis integral yaitu integral tak tentu dan dan itegral tertentu.
+        </p>
+        <ul>
+          <li>Integral tak tentu</li>
+          <li>Integral tertentu</li>
+          <li>
+            Coding (Metode Upper dan Lower sum)
+            <pre>
+              <code>
+def integrasiNumerik(p, mBesar, mKecil):
+selisih = p[1] - p[0]
+totalMKecil = 0
+totalMBesar = 0
+for i in range(len(mBesar)):
+    totalMKecil += mKecil[i]
+    totalMBesar += mBesar[i]
+
+L = selisih * totalMKecil
+U = selisih * totalMBesar
+return (U + L) / 2
+
+print("===PROGRAM INTEGRASI NUMERIK===")
+n = int(input("Masukkan jumlah partisi"))
+
+p = []
+for i in range(n):
+    print("Masukkan partisi ke-" + str(i+1), end=" = ")
+    p.append(float(input()))
+
+mKecil = []
+for i in range(n-1):
+    print("Masukkan m ke-" + str(i+1), end=" = ")
+    mKecil.append(float(input()))
+
+mBesar = []
+for i in range(n-1):
+    while True:
+        print("Masukkan M ke-" + str(i+1), end=" = ")
+        temp = float(input())
+
+        if i == n-2 or temp == mKecil[i+1]:
+            break
+        else:
+            print("INPUT TIDAK SESUAI")
+    mBesar.append(temp)
+
+print(integrasiNumerik(p, mBesar, mKecil))
+              </code>
+            </pre>
+          </li>
+          <li>
+            Coding (Recursive Trapezoid)
+            <pre>
+              <code>
+import math
+​
+def R(n):
+    h = (math.pi / 2 - 0) / (2 ** n)
+    if n == 0:
+        return math.pi / 4 * (math.sin(0) + math.sin(3.14 / 2))
+    else:
+        sigma = 0
+        for k in range(1, 2 ** (n -1) + 1):
+            sigma += math.sin((2 * k - 1) * h) # a tidak ditulis karena a = 0
+        return R(n - 1) / 2 + h * sigma
+​
+for n in range(0, 3 + 1):
+    print("R(" + str(n) + ", 0) = " + str(R(n)))
+​
+print("")
+​
+print("Estimasi  Error = |R(3,0) – R(2,0)| = " + str(R(3) - R(2)))
+              </code>
+            </pre>
+          </li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="Solusi_Numerik_Dari_Sistem_Persamaan_Aljabar_Linier">
+      <header>
+        Solusi Numerik Dari Sistem Persamaan Aljabar Linier
+      </header>
+      <article>
+        <p>
+          Dalam menyelesaikan persamaan aljabar Linier kita dapat menghitungnya secara manual. Namun apabila jumlah persamaan atau variabel terlalu banyak pasti akan menyita banyak waktu serta membuat energi banyak terbuang. Oleh karena itu terdapat solusi numerik untuk melakukan penyelesaian Sistem persamaan linier. Diantaranya metode Eliminasi Gauss, Jacobi dan Gauss seidel.
+        </p>
+        <ul>
+          <li>
+            Coding (eliminasi gauss)
+            <pre>
+              <code>
+def eliminasiGauss(matrik1, matrik2):
+for i in range(len(matrik1) - 1): # 1 <= i < jumlah variabel
+    for j in range(i + 1, len(matrik1)): # j = baris setelah i sampai baris terakhir
+        # Menentukan pengali untuk mengasilkan 0 pada kolom/variabel yang akan dieliminasi
+        pengali = matrik1[j][i] / matrik1[i][i]
+        for k in range(i, len(matrik1[j])): # i <= k <= n
+            matrik1[j][k] = matrik1[j][k] - int(pengali * matrik1[i][k])
+        matrik2[j] = matrik2[j] - int(matrik2[i] * pengali)
+
+# Substitusi mundur
+hasil = [None for x in range(len(matrik1[0]))]
+for i in range(len(matrik1) - 1, -1, -1):
+    for j in range(len(matrik1) - 1, i, -1):
+        matrik2[i] = matrik2[i] - (hasil[j] * matrik1[i][j])
+    hasil[i] = int(matrik2[i] / matrik1[i][i])
+return hasil
+              </code>
+            </pre>
+          </li>
+          <li>
+            Coding (Gauss Seidel)
+            <pre>
+              <code>
+# x => X(k), y => X(k+1)
+def jacobi(n, t, a, b):
+    k = 1
+    x = [0 for x in range(len(a))]
+    y = [0 for x in range(len(a))]
+    while k <= n:
+        for i in range(len(a)):
+            sigma = 0
+            for j in range(len(a[i])):
+                if j != i:
+                    sigma += a[i][j] * y[j]
+            y[i] = (b[i] - sigma) / a[i][i]
+        print("k = " + str(k))
+        print(str(y) + "\n")
+        toleransi = 0
+        for i in range(len(x)):
+            toleransi += (y[i] - x[i])
+
+        if toleransi < 0:
+            toleransi *= -1
+
+        if toleransi < t:
+            break
+
+        for i in range(len(x)):
+            x[i] = y[i]
+
+        k += 1
+
+    for i in range(len(y)):
+        y[i] = round(y[i])
+    print("Hasil : ")
+    print(y)
+
+n = int(input("Masukkan batas iterasi : "))
+t = int(input("Masukkan batas toleransi : "))
+length = int(input("Masukkan jumlah variabel : "))
+print('')
+
+a = [ [] for x in range(length)]
+b = []
+
+for i in range(length):
+    for j in range(length):
+        temp = int(input("a[" + str(i) + ", " + str(j) + "] : "))
+        a[i].append(temp)
+    konstanta = int(input("Masukkan konstanta : "))
+    b.append(konstanta)
+    print("")
+
+jacobi(n, t, a, b)
+              </code>
+            </pre>
+          </li>
+          <li>
+            Coding (jacobi)
+            <pre>
+              <code>
+# x => X(k), y => X(k+1)
+def jacobi(n, t, a, b):
+    x = [0 for x in range(len(a))]
+    y = [0 for x in range(len(a))]
+    for k in range(1, n + 1):
+        for i in range(len(a)):
+            sigma = 0
+            for j in range(len(a[i])):
+                if j != i:
+                    sigma += a[i][j] * x[j]
+            y[i] = (b[i] - sigma) / a[i][i]
+        print("k = " + str(k))
+        for i in range(len(y)):
+            print("x[" + str(i+1) + "] = " +str(y[i]))
+        print("")
+
+        toleransi = 0
+        for i in range(len(x)):
+            toleransi += (y[i] - x[i])
+
+        if toleransi < 0:
+            toleransi *= -1
+
+        if toleransi < t:
+            break
+
+        for i in range(len(x)):
+            x[i] = y[i]
+
+    for i in range(len(y)):
+        y[i] = round(y[i])
+    print("Hasil : ")
+    print(y)
+
+a = [
+    [3, 1, -1],
+    [4, 7, -3],
+    [2, -2, 5]
+]
+
+b = [5, 20, 10]
+jacobi(20, 0.000001, a, b)
+              </code>
+            </pre>
+          </li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="Solusi_numerik_dari_persamaan_diferensial_biasa">
+      <header>
+        Solusi numerik dari persamaan diferensial biasa
+      </header>
+      <article>
+        <p>
+          Persamaan diferensial adalah persamaan matematika untuk fungsi satu variabel atau lebih, yang menghubungkan nilai fungsi itu sendiri dan turunannya dalam berbagai orde. Persamaan diferensial memegang peranan penting dalam rekayasa, fisika, ilmu ekonomi dan berbagai macam disiplin ilmu lain.
+        </p>
+        <p>
+          Visualisasi aliran udara ke dalam saluran dimodelkan sesuai persamaan Navier-Stokes Persamaan diferensial muncul dalam berbagai bidang sains dan teknologi, bilamana hubungan deterministik yang melibatkan besaran yang berubah secara kontinu (dimodelkan oleh fungsi matematika) dan laju perubahannya (dinyatakan sebagai turunan) diketahui atau dipostulatkan. Ini terlihat misalnya pada mekanika klasik, di mana gerakan sebuah benda diperikan oleh posisi dan kecepatannya terhadap waktu. Hukum Newton memungkinkan kita mengetahui hubungan posisi, kecepatan, percepatan dan berbagai gaya yang bertindak terhadap benda tersebut, dan menyatakannya sebagai persamaan diferensial posisi sebagai fungsi waktu. Dalam banyak kasus, persamaan diferensial ini dapat dipecahkan secara eksplisit, dan menghasilkan hukum gerak.
+        </p>
+        <ul>
+          <li>
+            Metode Persamaan Diferensial
+            <p>
+              Persamaan Differensial biasa dengan Metode Euler Metode Euler adalah metode untuk menyelesaikan persamaan diferensial biasa
+            </p>
+            <p>
+              dengan memanfaatkan uraian Deret Taylor. Penyelesaian persamaan differensial biasa dengan metode Euler adalah proses mencari nilai fungsi y(x)pada titik x tertentu dari persamaan differensial biasa f(x,y) yang diketahui dengan menggunakan persamaan umum.
+            </p>
+          </li>
+        </ul>
+      </article>
+    </section>
+
+  </main>
+
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
