@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    margin: 0 80px;
+    height: 100%;
+}
+#navbar {
+    height: 60px;
+    background-color: #dc143c;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#navbar ul {
+    list-style-type: none;
+    /* background-color: darkblue; */
+    width: 400px;
+    height: 100%;
+    margin: 0 0 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16pt;
+}
+
+section {
+    padding: 40px 0 80px;
+}
+
+#welcome-section {
+    background-color: #303030;
+    /* padding: 150px 0; */
+    height: 100vh;
+    margin-top: 60px;
+}
+
+#welcome-section .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#welcome-section h1,
+section h1,
+p {
+    color: white;
+    font-size: 30pt;
+    text-align: center;
+}
+
+#welcome-section h1 {
+    font-size: 45pt;
+}
+
+#welcome-section p {
+    font-size: 20pt;
+}
+
+#projects {
+    background-color: #2F3A8F;
+}
+
+.project-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.project-tile {
+    flex: 1;
+    background: white;
+    margin-right: 10px;
+    /* flex-wrap: wrap;  */
+    border-radius: 5px;
+    overflow: hidden;   
+    border: 1px solid gray;
+}
+
+.project-tile:nth-last-child() {
+    margin: 0;
+}
+
+.project-tile img {
+    width: 100%;
+    display: block;
+}
+
+.project-tile figcaption {
+    padding: 10px 10px;
+    text-align: center;
+    border-top: 1px solid gray;
+}
+
+.project-tile figcaption a {
+    color: #313131;
+}
+
+#about {
+    background-color: #0f1338;
+}
+
+#about ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin-top: 50px;
+}
+
+#about ul li {
+    margin: 0 10px;
+}
+
+#about ul li img {
+    height: 14pt;
+}
+
+#about #profile-link {
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-size: 14pt;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        margin: 0 20px;
+    }
+
+    #navbar {
+        position: fixed;
+        /* bottom: 0; */
+        top: 0;
+    }
+
+    /* #welcome-section {
+        margin-top: ;
+    } */
+
+    #navbar .nav-list {
+        margin: 0;
+        width: 100%;
+    }
+
+    #projects .project-container {
+        flex-direction: column;
+    }
+
+    #projects .project-tile {
+        margin-bottom: 10px;
+    }
+}
