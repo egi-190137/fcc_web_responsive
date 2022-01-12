@@ -91,7 +91,7 @@
             Algoritma
             <pre>
               <code>
-<!-- PROGRAM Bisection
+PROGRAM Bisection
 
 f = lambda x : x**2 - 7*x + 10
 
@@ -99,20 +99,20 @@ float a, b, toleransi
 boolean lanjut
 
 read(a, b, toleransi)
-fa <- f(a)
-fb <- f(b)
+fa &#60;- f(a)
+fb &#60;- f(b)
 while True:
-    c <- (a+b) / 2
-    fc <- f(c)
-    lanjut <- abs(b-a) / 2 > toleransi
-    if fa * fc < 0:
+    c &#60;- (a+b) / 2
+    fc &#60;- f(c)
+    lanjut &#60;- abs(b-a) / 2 	&#62; toleransi
+    if fa * fc &#60; 0:
         b, fb = c, fc
     else:
         a, fa = c, fc
 
     if not lanjut:
         break
-write(c) -->
+write(c)
               </code>
             </pre>
           </li>
@@ -120,7 +120,7 @@ write(c) -->
             Coding
             <pre>
               <code>
-<!-- a = float(input())
+a = float(input())
 b = float(input())
 toleransi = float(input())
 fa = f(a)
@@ -128,15 +128,15 @@ fb = f(b)
 while True:
     c = (a+b) / 2
     fc = f(c)
-    lanjut = abs(b-a) / 2 > toleransi
-    if fa * fc < 0:
+    lanjut = abs(b-a) / 2 &#62; toleransi
+    if fa * fc &#60; 0:
         b, fb = c, fc
     else:
         a, fa = c, fc
 
     if not lanjut:
         break
-print(c) -->
+print(c)
               </code>
             </pre>
           </li>
@@ -154,7 +154,7 @@ print(c) -->
             Algoritma
             <pre>
               <code>
-<!-- PROGRAM newton Raphson
+PROGRAM newton Raphson
 
 f = lambda x : x**3 - 2*(x**2) + x - 3
 fp = lambda x : 3*(x**2) - 4*x + 1
@@ -162,18 +162,18 @@ fp = lambda x : 3*(x**2) - 4*x + 1
 float xOld, t
 integer n, iterasi
 read(xOld, t, n)
-iterasi <- 1
-xNew <- xOld - (f(xOld)/fp(xOld))
-while iterasi <= n:
-    xOld <- xNew
-    iterasi <- iterasi + 1
+iterasi &#60;- 1
+xNew &#60;- xOld - (f(xOld)/fp(xOld))
+while iterasi &#60;= n:
+    xOld &#60;- xNew
+    iterasi &#60;- iterasi + 1
 
-    xNew <- xOld - (f(xOld)/fp(xOld))
+    xNew &#60;- xOld - (f(xOld)/fp(xOld))
 
-    if abs(xNew - xOld) < t:
+    if abs(xNew - xOld) &#60; t:
         break
 
-write(xNew) -->
+write(xNew)
               </code>
             </pre>
           </li>
@@ -181,7 +181,7 @@ write(xNew) -->
             Coding
             <pre>
               <code>
-<!-- f = lambda x : x**3 - 2*(x**2) + x - 3
+f = lambda x : x**3 - 2*(x**2) + x - 3
 fp = lambda x : 3*(x**2) - 4*x + 1
 
 xOld = float(input())
@@ -190,16 +190,16 @@ n = int(input())
 iterasi = 1
 xNew = xOld - (f(xOld)/fp(xOld))
 
-while iterasi <= n:
+while iterasi &#60;= n:
     xOld = xNew
     iterasi += 1
 
     xNew = xOld - (f(xOld)/fp(xOld))
 
-    if abs(xNew - xOld) < t:
+    if abs(xNew - xOld) &#60; t:
         break
 
-print(xNew) -->
+print(xNew)
               </code>
             </pre>
           </li>
@@ -218,7 +218,7 @@ print(xNew) -->
             Algoritma
             <pre>
               <code>
-<!-- PROGRAM hitung akar dengan metode secant
+PROGRAM hitung akar dengan metode secant
 
 f = lambda x : x**2 - 5*x - 2
 
@@ -226,15 +226,15 @@ float x0, x1, x2, toleransi
 read(x0, x1, toleransi)
 
 while True:
-    x2 <- x1 - f(x1) * ( (x1 - x0) / f(x1) - f(x0) )
+    x2 &#60;- x1 - f(x1) * ( (x1 - x0) / f(x1) - f(x0) )
 
-    if abs(x2 - x1) < toleransi:
+    if abs(x2 - x1) &#60; toleransi:
         break
 
-    x0 <- x1
-    x2 <- x1
+    x0 &#60;- x1
+    x2 &#60;- x1
 
-write(x2) -->
+write(x2)
               </code>
             </pre>
           </li>
@@ -242,11 +242,11 @@ write(x2) -->
             Coding
             <pre>
               <code>
-<!-- f = lambda x : x**2 - 5*x - 2
+f = lambda x : x**2 - 5*x - 2
 
-# x(i-1) => x0
-# xi => x1
-# x(i+1) => x2
+# x(i-1) =&#62; x0
+# xi =&#62; x1
+# x(i+1) =&#62; x2
 x0 = float(input())
 x1 = float(input())
 toleransi = float(input())
@@ -254,12 +254,12 @@ toleransi = float(input())
 while True:
     x2 = x1 - f(x1) * ( (x1 - x0) / f(x1) - f(x0) )
 
-    if abs(x2 - x1) < toleransi:
+    if abs(x2 - x1) &#60; toleransi:
         break
 
     x1, x0 = x2, x1
 
-print(x2) -->
+print(x2)
               </code>
             </pre>
           </li>
@@ -298,7 +298,7 @@ print(x2) -->
             Coding (Metode Upper dan Lower sum)
             <pre>
               <code>
-<!-- def integrasiNumerik(p, mBesar, mKecil):
+def integrasiNumerik(p, mBesar, mKecil):
 selisih = p[1] - p[0]
 totalMKecil = 0
 totalMBesar = 0
@@ -335,7 +335,7 @@ for i in range(n-1):
             print("INPUT TIDAK SESUAI")
     mBesar.append(temp)
 
-print(integrasiNumerik(p, mBesar, mKecil)) -->
+print(integrasiNumerik(p, mBesar, mKecil))
               </code>
             </pre>
           </li>
@@ -343,7 +343,7 @@ print(integrasiNumerik(p, mBesar, mKecil)) -->
             Coding (Recursive Trapezoid)
             <pre>
               <code>
-<!-- import math
+import math
 ​
 def R(n):
     h = (math.pi / 2 - 0) / (2 ** n)
@@ -360,7 +360,7 @@ for n in range(0, 3 + 1):
 ​
 print("")
 ​
-print("Estimasi  Error = |R(3,0) – R(2,0)| = " + str(R(3) - R(2))) -->
+print("Estimasi  Error = |R(3,0) – R(2,0)| = " + str(R(3) - R(2)))
               </code>
             </pre>
           </li>
@@ -381,12 +381,12 @@ print("Estimasi  Error = |R(3,0) – R(2,0)| = " + str(R(3) - R(2))) -->
             Coding (eliminasi gauss)
             <pre>
               <code>
-<!-- def eliminasiGauss(matrik1, matrik2):
-for i in range(len(matrik1) - 1): # 1 <= i < jumlah variabel
+def eliminasiGauss(matrik1, matrik2):
+for i in range(len(matrik1) - 1): # 1 &#60;= i &#60; jumlah variabel
     for j in range(i + 1, len(matrik1)): # j = baris setelah i sampai baris terakhir
         # Menentukan pengali untuk mengasilkan 0 pada kolom/variabel yang akan dieliminasi
         pengali = matrik1[j][i] / matrik1[i][i]
-        for k in range(i, len(matrik1[j])): # i <= k <= n
+        for k in range(i, len(matrik1[j])): # i &#60;= k &#60;= n
             matrik1[j][k] = matrik1[j][k] - int(pengali * matrik1[i][k])
         matrik2[j] = matrik2[j] - int(matrik2[i] * pengali)
 
@@ -396,7 +396,7 @@ for i in range(len(matrik1) - 1, -1, -1):
     for j in range(len(matrik1) - 1, i, -1):
         matrik2[i] = matrik2[i] - (hasil[j] * matrik1[i][j])
     hasil[i] = int(matrik2[i] / matrik1[i][i])
-return hasil -->
+return hasil
               </code>
             </pre>
           </li>
@@ -404,12 +404,12 @@ return hasil -->
             Coding (Gauss Seidel)
             <pre>
               <code>
-<!-- # x => X(k), y => X(k+1)
+# x =&#62; X(k), y =&#62; X(k+1)
 def jacobi(n, t, a, b):
     k = 1
     x = [0 for x in range(len(a))]
     y = [0 for x in range(len(a))]
-    while k <= n:
+    while k &#60;= n:
         for i in range(len(a)):
             sigma = 0
             for j in range(len(a[i])):
@@ -422,10 +422,10 @@ def jacobi(n, t, a, b):
         for i in range(len(x)):
             toleransi += (y[i] - x[i])
 
-        if toleransi < 0:
+        if toleransi &#60; 0:
             toleransi *= -1
 
-        if toleransi < t:
+        if toleransi &#60; t:
             break
 
         for i in range(len(x)):
@@ -454,7 +454,7 @@ for i in range(length):
     b.append(konstanta)
     print("")
 
-jacobi(n, t, a, b) -->
+jacobi(n, t, a, b)
               </code>
             </pre>
           </li>
@@ -462,7 +462,7 @@ jacobi(n, t, a, b) -->
             Coding (jacobi)
             <pre>
               <code>
-<!-- # x => X(k), y => X(k+1)
+# x =&#62; X(k), y =&#62; X(k+1)
 def jacobi(n, t, a, b):
     x = [0 for x in range(len(a))]
     y = [0 for x in range(len(a))]
@@ -482,10 +482,10 @@ def jacobi(n, t, a, b):
         for i in range(len(x)):
             toleransi += (y[i] - x[i])
 
-        if toleransi < 0:
+        if toleransi &#60; 0:
             toleransi *= -1
 
-        if toleransi < t:
+        if toleransi &#60; t:
             break
 
         for i in range(len(x)):
@@ -503,7 +503,7 @@ a = [
 ]
 
 b = [5, 20, 10]
-jacobi(20, 0.000001, a, b) -->
+jacobi(20, 0.000001, a, b)
               </code>
             </pre>
           </li>
@@ -537,6 +537,8 @@ jacobi(20, 0.000001, a, b) -->
     </section>
 
   </main>
+
+  <script src="script.js"></script>
 
   <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </body>
